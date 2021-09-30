@@ -1,0 +1,1775 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/icon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        :root {
+            --base-color: rgb(245, 157, 42);
+            --background-color: #154854;
+            --base-color2: #222831;
+            --text-gray: #9199a2;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: "Mulish", sans-serif;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+        }
+
+        body {
+            background: var(--background-color);
+            color: #fff;
+        }
+
+        header {
+            display: block;
+            text-align: center;
+            color: #000;
+            background-color: #b7bea9;
+            font-size: 1rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            width: 100vw;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--base-color);
+        }
+
+        .btn {
+            border-radius: 0.5rem;
+            padding: 0.5em;
+            outline: none;
+            background: #fff;
+            cursor: pointer;
+            border: none;
+            margin: 0.5rem;
+            white-space: nowrap;
+            transition: 0.3s all;
+        }
+
+        .btn--white {
+            font-weight: 700;
+            color: #000;
+            padding: 0.4rem 0.8rem;
+        }
+
+        .content-section {
+            width: 100%;
+            padding: 1rem 1rem;
+            margin: auto;
+        }
+
+        .brand {
+            width: 180px;
+            padding-top: 1rem;
+        }
+
+        .nav-container {
+            right: 0;
+            padding: 0 40px;
+            background-color: var(--base-color2);
+            color: var(--base-color);
+            border-bottom-left-radius: 26px;
+            box-shadow: -1px 4px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-element {
+            padding: 0 1rem;
+        }
+
+        .nav-link {
+            display: inline-block;
+            color: inherit;
+            padding: 1.1rem 0;
+            position: relative;
+        }
+
+        .nav-link::after {
+            position: absolute;
+            top: 48px;
+            content: "";
+            display: block;
+            width: 0;
+            height: 3px;
+            background: var(--base-color);
+            transition: width .3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(100%);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .secondary-nav {
+            display: flex;
+            justify-content: flex-start;
+            color: var(--base-color);
+            align-items: center;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .secondary-nav a {
+            padding-right: 2.5rem;
+            position: relative;
+        }
+
+        .secondary-nav a::after {
+            position: absolute;
+            top: 0.2em;
+            right: 0.8rem;
+            opacity: 0.6;
+            content: url("https://notestwowaits.s3.us-east-1.amazonaws.com/notes/icon_breadcrumb_16.png");
+        }
+
+        .secondary-nav a:last-child::after {
+            display: none;
+        }
+
+        .active {
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: normal;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: normal;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        /* .flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+
+        .mg-top {
+            margin-top: 0.5rem;
+        }
+
+        .offer-card {
+            background-color: var(--base-color2);
+            border-radius: 0.5rem;
+            padding: 20px;
+        }
+
+        .offer-card .offer-img {
+            position: absolute;
+            z-index: 100000000;
+            top: -5px;
+            width: 100px;
+            left: -8px;
+        }
+
+        .offer-card-discount {
+            z-index: 10000000000000;
+            position: absolute;
+            top: 1.8rem;
+            left: -0.8rem;
+            font-size: 10px;
+            transform: rotate(-45deg);
+        }
+
+        /* .offer-card-left {
+  width: 15rem;
+  margin-right: 10px;
+} */
+
+        .btn--outline {
+            border: solid var(--background-color);
+            background: transparent;
+            color: #fff;
+        }
+
+        .btn--phone {
+            /* padding: 0.5rem 0.6rem; */
+            font-size: 0.8rem;
+            margin-left: 0;
+            margin-right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-icon {
+            width: 15px;
+        }
+
+        .text-muted {
+            color: var(--text-gray);
+        }
+
+        .text-orange {
+            color: var(--base-color);
+        }
+
+        .text-size-m {
+            font-size: 1.5rem;
+        }
+
+        .text-size-l {
+            font-size: 2rem;
+        }
+
+        /* .offer-card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+} */
+
+        .btn--main {
+            background: var(--base-color);
+            color: var(--base-color2);
+        }
+
+        .btn-l {
+            text-transform: uppercase;
+            font-weight: 700;
+            width: 100%;
+        }
+
+        .btn-l:hover {
+            background: var(--background-color);
+            box-shadow: 0 0 1rem var(--background-color);
+            color: #fff;
+        }
+
+        .btn--padding-l {
+            padding: 1rem 2rem;
+        }
+
+        iframe {
+            border: 3px solid var(--base-color2);
+            position: relative;
+            z-index: 1;
+            border-radius: 0.5rem;
+            width: 100%;
+            height: 335px;
+        }
+
+        .video-container {
+            margin-top: 1.7rem;
+            position: relative;
+        }
+
+        .bg-white {
+            background: #eeeeee;
+            padding: 2em 0em;
+        }
+
+        .card {
+            border-radius: 0.5rem;
+            background-color: var(--background-color);
+            padding: 1rem;
+        }
+
+        .card--shadow {
+            box-shadow: 0 0 1rem rgba(0, 0, 0, 0.8);
+        }
+
+        .sub-card {
+            background: var(--base-color2);
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        main {
+            padding-bottom: 1rem;
+        }
+
+        .heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .project-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 0.8rem 0;
+        }
+
+        .project-container img {
+            width: 80px;
+            padding-right: 0.8rem;
+        }
+
+        .perks-container {
+            text-align: center;
+            flex-direction: column;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .perks-container img {
+            width: 45px;
+            margin: 1rem 0rem 1rem 3rem;
+        }
+
+        .overlay--cards {
+            display: flex;
+        }
+
+        .perks {
+            display: flex;
+            height: calc(100% - 2rem);
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        /* footer {
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 2rem;
+}
+
+footer > * {
+  align-self: center;
+} */
+
+        h2 {
+            grid-column: span 3;
+        }
+
+        .white-link {
+            color: #fff;
+            font-size: 1rem;
+            display: block;
+            font-size: 1.2rem;
+            padding: 5px 0px;
+        }
+
+        .white-link:hover {
+            color: var(--base-color);
+        }
+
+        .mentor {
+            margin-top: 4rem;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-left: 28%;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .img-cover {
+            position: absolute;
+            width: 140px;
+            top: 0;
+            left: 0;
+        }
+
+        .pic-frame {
+            z-index: 100;
+            width: 150px;
+            height: 150px;
+            border-radius: 75px;
+            overflow: hidden;
+        }
+
+        .text-container {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            column-gap: 1rem;
+        }
+
+        .first-mentor {
+            color: #222;
+            margin-top: 50px;
+        }
+
+        /* .mentor {
+  display: grid;
+  grid-template-columns: 1fr 475px;
+  column-gap: 3rem;
+  grid-template-rows: min-content;
+} */
+
+        .container {
+            width: 100%;
+            padding: 2rem;
+            margin: 3rem auto;
+        }
+
+        .accordions {
+            background-color: #333;
+            color: #eee;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #222;
+            text-align: left;
+            font-size: 1rem;
+            transition: all 0.4s ease-out;
+            box-shadow: 0px 0px 34px -8px rgba(0, 0, 0, 0.75);
+        }
+
+        .syllabus .active,
+        .accordions:hover {
+            background-color: var(--background-color);
+        }
+
+        .syllabus .active:after {
+            content: "\2212";
+        }
+
+        .accordion-heading {
+            text-align: left;
+            font: 600 24px/35px Mulish;
+            letter-spacing: 0;
+            color: #fff;
+            opacity: 1;
+            cursor: pointer;
+            padding: 1rem;
+        }
+
+        .active-accordion .accordions-content {
+            height: auto;
+            transition: 0.3s;
+        }
+
+        .active-accordion {
+            background-color: var(--background-color);
+        }
+
+        .accordions-content {
+            padding: 0px 30px;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .accordions-content ul {
+            list-style-type: circle;
+            padding: 0.2rem;
+        }
+
+        .accordions-content ul li {
+            padding: 0.2rem 0;
+        }
+
+        .overflow--pic {
+            position: absolute;
+            left: 50%;
+            top: -70px;
+            transform: translateX(-50%);
+        }
+
+        .card--mentor {
+            padding-top: 70px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .card--feedback {
+            padding-bottom: 7rem;
+        }
+
+        .syllabus {
+            margin-top: 10px;
+            width: 100%;
+            background: #222831 0 0 no-repeat padding-box;
+            border-radius: 8px;
+            opacity: 1;
+        }
+
+        .syllabus-accordions {
+            padding: 20px;
+        }
+
+        .syllabus-pdf-link {
+            position: absolute;
+            text-decoration: none;
+            top: -30px;
+            right: 0;
+            text-align: right;
+            font: 700 20px/21px Mulish;
+            letter-spacing: 0;
+            text-transform: capitalize;
+            opacity: 1;
+        }
+
+        .syllabus-heading {
+            text-align: center;
+            font: 600 32px/46px Mulish;
+            letter-spacing: 0;
+            color: #eee;
+            text-transform: capitalize;
+            opacity: 1;
+            margin-bottom: 20px;
+        }
+
+        .syllabus .sub-card {
+            padding: 1rem;
+            margin: 1rem;
+        }
+
+        .card--dropdown h3 {
+            font-weight: 700;
+        }
+
+        .card--dropdown p {
+            color: #cfd2d7;
+        }
+
+        .card--dropdown {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            position: relative;
+            margin: 0.5rem 0;
+        }
+
+        .card--dropdown::after {
+            content: "^";
+            transform: rotate(180deg);
+            transition: 0.3s all;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--base-color);
+        }
+
+        .card--dropdown:hover::after {
+            transform: rotate(0deg);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .card--dropdown:hover .hidden,
+        .card--dropdown:hover hr {
+            display: block;
+        }
+
+        .card--dropdown:hover {
+            border: 3px solid var(--base-color);
+        }
+
+        footer h3 {
+            color: #cfd2d7;
+            font-style: italic;
+        }
+
+        hr {
+            border: 3px solid var(--base-color);
+            border-radius: 0.5rem;
+            border-top: 0;
+            margin-bottom: 0.5rem;
+            display: none;
+        }
+
+        .show-nav {
+            transform: translateX(0) !important;
+        }
+
+        .show-nav::before {
+            content: ">" !important;
+        }
+
+        .why-us-container {
+            width: 300px;
+            display: inline-block;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        @media only screen and (max-width: 970px) {
+
+            body,
+            html {
+                width: 100vw;
+                overflow-x: hidden;
+            }
+        }
+
+
+        @media screen and (min-width:480px) {
+            .course-card {
+                width: 100%
+            }
+
+            .course-card__buttons {
+                width: 100%;
+                align-self: center;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center
+            }
+
+            .course-category:focus {
+                border: 2px solid #ee7738
+            }
+        }
+
+        @media (min-width:768px) {
+            .content-section {
+                padding: 1rem 2rem;
+            }
+
+            .courses-main-outer-1 {
+                -webkit-filter: drop-shadow(0 10px 6px rgba(0, 0, 0, .5));
+                filter: drop-shadow(0 10px 6px rgba(0, 0, 0, .5))
+            }
+
+            .courses-main {
+                padding: 20px 0 30px;
+            }
+
+            .course-category {
+                padding: 0;
+                border: 3px solid #222831;
+            }
+
+            .course-category__icon {
+                margin-right: 10px;
+            }
+
+            .course-category:focus .course-category__icon,
+            .course-category__icon {
+                width: 14px;
+                height: 10px;
+                transform: rotate(-90deg);
+            }
+
+            .course-category:hover {
+                border-radius: 8px;
+            }
+
+            .course-card-outer {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .course-card {
+                opacity: .8;
+                border: none;
+                width: 90%;
+            }
+
+            .course-card__buttons {
+                display: none;
+                transition: all .4s ease-in-out;
+            }
+
+            .course-card-hover,
+            .course-card:hover {
+                opacity: 1;
+                border: 3px solid #ee7738;
+                padding-top: 10px;
+                width: 100%;
+                height: 652px;
+                transition: height .3s ease-in-out, width .3s ease-in-out;
+            }
+
+            .course-card-hover__buttons,
+            .course-card:hover .course-card__buttons {
+                display: flex;
+                transition: all .4s ease-in-out;
+            }
+
+            .course-card:hover .course-card__features {
+                display: block
+            }
+
+            .course-card-hover__features {
+                display: block;
+                text-align: center;
+                font: normal 16px/20px;
+                letter-spacing: 0;
+                color: #fff;
+                opacity: .8
+            }
+
+            .course-card__features {
+                display: none
+            }
+        }
+
+        @media (min-width:991px) {
+            .girl-icon {
+                left: -3%;
+                width: 290px;
+                bottom: -2px
+            }
+
+            .courses-heading {
+                font: 700 40px/52px;
+                letter-spacing: 0;
+                color: #fff;
+                opacity: 1
+            }
+
+            .course-card__buttons {
+                flex-direction: row;
+            }
+
+            .course-card__title {
+                width: 80%
+            }
+
+            .course-category:hover {
+                border: 3px solid #ee7738;
+                border-radius: 8px;
+            }
+        }
+
+        @media (min-width:1200px) {
+            .course-card__buttons {
+                flex-direction: row;
+            }
+
+            .course-card__title {
+                width: 75%;
+            }
+        }
+
+        .feedback-c {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            text-align: left;
+            width: 350px;
+            padding: 20px 20px 30px;
+            background-color: #154854;
+            border-radius: 25px;
+        }
+
+        .feedback-more a {
+            text-decoration: underline;
+        }
+
+        .feedback-course {
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            text-align: left;
+            width: 450px;
+            padding: 15px 20px 35px;
+            background-color: #154854;
+            border-radius: 25px;
+        }
+
+        .feedback-img img {
+            width: 70px;
+            height: 70px;
+            border-radius: 35px;
+            overflow: hidden;
+        }
+
+        .feedback-more,
+        .feedback-text {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        .feedback-name {
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .feedback-text {
+            margin-top: 10px;
+        }
+
+        .feedback-profile {
+            font-size: 12px;
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .feedback-profile img {
+            width: 40px;
+            margin-top: 5px;
+        }
+
+        .view-course {
+            position: relative;
+            width: 100%;
+            background: var(--background-color);
+            border-radius: 8px;
+            opacity: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card ul {
+            padding-left: 20px;
+            color: #cfd2d7;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .card li {
+            padding-bottom: 25px;
+        }
+
+        /* techfest */
+
+        .register-b {
+            color: var(--base-color2);
+            font-size: 20px;
+            display: inline-block;
+            border-radius: 5px;
+            margin-top: 35px;
+            padding: 15px 50px;
+            background-color: var(--base-color);
+        }
+
+        .register-b:hover {
+            color: #fff;
+            font-size: 20px;
+            display: inline-block;
+            border-radius: 5px;
+            margin-top: 35px;
+            padding: 15px 50px;
+            background-color: var(--base-color2);
+        }
+
+        .event-card {
+            background-color: #2c3d4f;
+            font-size: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .event-card-desc {
+            opacity: 0.6;
+            margin-top: 5px;
+        }
+
+        .speaker {
+            display: inline-block;
+            width: 300px;
+            border-radius: 5px;
+            padding: 20px 10px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .speaker-name {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .speaker-desc {
+            font-size: 14px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .speaker-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+        }
+
+        .footer-link {
+            display: inline-block;
+            margin-right: 20px;
+            margin-top: 30px;
+        }
+
+        .footer-link a {
+            font-size: 18px;
+        }
+
+        @media only screen and (max-width: 970px) {
+            .event-below-desc {
+                font-size: 18px;
+            }
+
+            .event-card {
+                width: 100%;
+            }
+
+            .speaker {
+                margin-bottom: 10px;
+            }
+
+            .home-left {
+                width: 100%;
+                text-align: center;
+            }
+
+            .home-right {
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            .home-facts {
+                margin-bottom: 40px;
+            }
+        }
+
+        @media only screen and (min-width: 970px) {
+            .event-below-desc {
+                font-size: 24px;
+            }
+
+            .event-card {
+                width: 600px;
+            }
+
+            .speaker {
+                margin: 0px 5px 10px 0px;
+            }
+
+            .home-left {
+                width: 66.67%;
+            }
+
+            .home-right {
+                margin-left: 3rem;
+                margin-top: 0.5rem;
+            }
+
+            .home-facts {
+                width: 350px;
+                display: inline-block;
+                vertical-align: top;
+            }
+        }
+    </style>
+    <title>Tathastu by Twowaits | Internships | Jobs</title>
+</head>
+
+<body>
+    <div class="bg-white container" style="border-radius: 10px;">
+        <h2 class="text-dark text-center font-weight-bold">Student Testimonials</h2>
+
+        <div style="margin-top: 40px; text-align: center;">
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_shivangi_tiwari.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Shivangi Tiwari</div>
+                        <div class="feedback-more">AKGEC, Ghaziabad</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/shivangi-tiwari-85a9861a3">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">It was a good experience and I enjoyed making all of the projects, guidance
+                    and so many study material was provided, thank you for this bootcamp.</div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_rajat_gupta.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Rajat Gupta</div>
+                        <div class="feedback-more">HBTU, Kanpur</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/rajat-hbtu/">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">The course is very useful in learning and understanding the basics as well as
+                    intermediate concepts in data science and machine learning. The course is focused on projects based
+                    learning which is helpful in learning and understanding.</div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_priya_srivastava.png" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Priya Srivastava</div>
+                        <div class="feedback-more">SRMCEM, Lucknow</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/priya-srivastava-a4b8851aa">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">I was drawn towards Machine learning, Artificial intelligence and through
+                    this course I learned a lot and explored the field. Also, the instructor explained every topic very
+                    well and I am glad that I took this course.</div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_snehil_s_kumar.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Snehil S Kumar</div>
+                        <div class="feedback-more">BITS Pilani</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/snehil-s-kumar/">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">The Data Science KickStart course was very intuitive and gave insights from
+                    the basic to intermediate machine learning with hand on live project focused on doubt clearing on
+                    the go. It was a very enriching experience and I
+                    got to learn and apply a lot of thing in the Data Science and Machine Learning.</div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_aviral_srivastava.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Aviral Srivastava</div>
+                        <div class="feedback-more">GL Bajaj, Greater Noida</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/aviral-srivastava-327aaa209/">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">I had a wonderful experience with KickStart Data science course. Instructor
+                    has been an amazing mentor throughout the journey explaining all the projects deeply. Achintya sir
+                    also has been an amazing tutor supporting organising
+                    everything.</div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_sanobar_khan.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Sanobar Khan</div>
+                        <div class="feedback-more">GCET, Greater Noida</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/sanobar-khan-a22358186/">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">It was a very good experience, I have learned alot.</div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_rijul_kumar_ramesh.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Rijul Kumar Ramesh</div>
+                        <div class="feedback-more">GCET, Greater Noida</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/rijul-kumar-85a9171a8/">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">The Course was Awesome.</div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_sai_shivani.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Sai Shivani R</div>
+                        <div class="feedback-more">SASTRA University, TN</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/shivani-r-876b721bb/">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">The Data Science bootcamp was extremely enriching and helpful. My instructor
+                    did his best to incorporate most of the important topics within the period of one month. Useful
+                    articles regarding these topics were shared. The session
+                    was hands-on in nature. This approach of applying the theory in a practical way to solve real world
+                    problems made me look forward to every session. The projects I have completed have definitely
+                    boosted my skill base and
+                    are a great addition to to my profiles on GitHub, etc. I would like to thank my instructor and
+                    Tathastu for providing this wonderful opportunity. </div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_akhila.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Akhilandeswari Pidikiti</div>
+                        <div class="feedback-more">SASTRA University, TN</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://github.com/akhilapidikiti">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">I really enjoyed this course and the way of giving content is fabulous and
+                    the doubt sessions provided was really helpful.</div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_deepanshi_gupta.png" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Deepanshi Gupta</div>
+                        <div class="feedback-more">MIT, Meerut</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/deepanshi-gupta-7a1b14201">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">It was a really great. I got to learn alot in this bootcamp. I'm really
+                    thankful to Achintya for providing me this facility and for being so supportive throughout the camp.
+                </div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_aman_kumar_mishra.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Aman Kumar Mishra</div>
+                        <div class="feedback-more">MGMCoET, Noida</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/aman-mishra-8190ab1a1/">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">I join the Data science bootcamp, it is very knowledgeable and I learn a lot
+                    from this course. It is a great experience to attach with such a amazing and nice people.</div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_alok_kumar.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Alok Kumar</div>
+                        <div class="feedback-more">MGMCoET, Noida</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/alok-kumar-7ab1101a5">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">This course is very good to boost our programming knowledge in python.</div>
+
+            </div>
+
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_vedansh.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Vedansh Girdharwal</div>
+                        <div class="feedback-more">FGIET</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/vedansh-girdharwal-0b14b8194">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">I joined the Kickstart Data Science Bootcamp to gain new skill. And honestly
+                    how instructor taught us, it generated my interest in data science and now as I am gaining my
+                    confidence in this field, I think I will have a career
+                    in this. Instructor really has done a wonderful job in explaining things to us and solving our
+                    doubts. Really appreciable. </div>
+
+            </div>
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_shivangi_srivastav.jpg" />
+                    </div>
+                    <div class="col-7" style="margin-top: 5px;">
+                        <div class="feedback-name">Shivangi Srivastav</div>
+                        <div class="feedback-more">SRMCEM, Lucknow</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/shivangi-srivastav-a112b916b">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">KickStart Data Science bootcamp provides me a lot of new knowledge and
+                    experience regarding Machine Leaning, Deep Learning, etc. And using these learning we have created
+                    several projects such as COVID19 Data Analysis, Zomato
+                    Data Analysis, Malaria Disease Detector and many more.</div>
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_sanjeevni.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Sanjeevni</div>
+                        <div class="feedback-more">Banaras Hindu University</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://linkedin.com/in/sanjeevni-goel-467b19199">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">It's a task of appreciation that Tathastu bring us the course which is highly
+                    recommended nowadays and not only B.tech. but any student from any field can join it. Our Problems
+                    were solved and Projects were nicely taught.</div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_boond_babu.jpg" />
+                    </div>
+                    <div class="col-7" style="margin-top: 5px;">
+                        <div class="feedback-name">Boond Babu Sonkar</div>
+                        <div class="feedback-more">AIMT, Lucknow</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/boond-babu-sonkar-01b531191">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">Good experience.</div>
+            </div>
+
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_pratik_kumar.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Pratik Kumar</div>
+                        <div class="feedback-more">BIT Mesra</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://github.com/pratikkumar2000/">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">Overall it was an extremely good and enthralling experience. This Web
+                    development bootcamp by Tathastu generated a positive atmosphere and provided me with a lot of space
+                    to explore and gave an ample time to showcase my talent.
+                    The main highlight of the bootcamp was my instructor, who kept us motivated and made the programme
+                    more interesting. He did not let the spirit in us to die out and was very helpfull. Lastly, it was
+                    an amazing boot camp
+                    and I learnt a lot.</div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_ayushi_pandey.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Ayushi Pandey</div>
+                        <div class="feedback-more">GL Bajaj, Greater Noida</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/ayushi-pandey-a2b14b18a/">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">It was really nice. I made all the projects and got full support in my
+                    learning. I alsp enrolled in MERN Batch to advance my knowledge in webD.</div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_chitransh_srivastava.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Chitransh Srivastava</div>
+                        <div class="feedback-more">GL Bajaj, Greater Noida</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/chitransh-srivastava-0b2b12193">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">Great Tutorials with best doubt sessions. </div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_chhayank_sharma.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Chhayank Sharma</div>
+                        <div class="feedback-more">GLA University, Mathura</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://in.linkedin.com/in/chhayank-sharma-06882a1b2">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">I want to thank the instructor for his patience and assistance during my
+                    on-site training. Thanks to their guidance, I was able to develop Website and learn about HTML5,
+                    CSS, JavaScript and Many More. These skills will help
+                    me to expand my resume and advance my career.</div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_prerna_kulshrestha.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Prerna Kulshrestha</div>
+                        <div class="feedback-more">GLA University, Mathura</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/prerna-kulshrestha-0b47231b8/">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">I like their way of teaching and they help their student till they understand
+                    the concept so over all I am satisfied with this bootcamp.</div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_utsav_agarwal.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Utsav Agarwal</div>
+                        <div class="feedback-more">KIET Ghaziabad</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/utsavagarwal1/">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">It was mind blowing, I learned a lot in this course. I appreciate the
+                    teaching of our instructor, he gave us time to solve our problem he also solved our problems on
+                    watsapp too. Now I can say that I Have 3 projects to put
+                    it in my resume and im very confident now with my web development skills. I hope You provide many
+                    such course in future again.</div>
+
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_ashish_rathour.jpg" />
+                    </div>
+                    <div class="col-7" style="margin-top: 5px;">
+                        <div class="feedback-name">Ashish Rathour</div>
+                        <div class="feedback-more">GL Bajaj, Noida</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/ashishrathour198">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">I have been learning from Tathastu this summer and it has been a great
+                    experience. Their lectures were engaging, useful and instructor was very patient with everyone in
+                    class and always encouraging students to try. I would
+                    highly recommend Tathastu to anyone interested in learning.</div>
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_uddeshya_patel.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Uddeshya Patel</div>
+                        <div class="feedback-more">NIET, Greater Noida</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/uddeshya-patel-a247611b2/">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">This is my First Experience With Tathastu & I am totally satisfied with the
+                    learning experience. 🤗🤗 </div>
+
+            </div>
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_rashmith_sai.jpg" />
+                    </div>
+                    <div class="col-7" style="margin-top: 5px;">
+                        <div class="feedback-name">Rashmith Sai Bairi</div>
+                        <div class="feedback-more">LPU, Punjab</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="http://linkedin.com/in/rashmith-sai-446aaa141">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">Teaching methodology is good and the theory explanations is very lucid.</div>
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_aroob.jpg" />
+                    </div>
+                    <div class="col-7" style="margin-top: 5px;">
+                        <div class="feedback-name">Aroob</div>
+                        <div class="feedback-more">AKGEC, Ghaziabad</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/aroob-anjum-98578a1b4">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">My experience with you guys was very good. From this session, I really get to
+                    learn many news things which I couldn't be learn in this pandemic.</div>
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_ishika_lamba.jpg" />
+                    </div>
+                    <div class="col-7" style="margin-top: 5px;">
+                        <div class="feedback-name">Ishika Lamba</div>
+                        <div class="feedback-more">AKGEC, Ghaziabad</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/ishika-lamba-337ba1204/">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">The content of the course was on point and well structured, I learnt a lot.
+                </div>
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_goteti_venkatesh.jpg" />
+                    </div>
+                    <div class="col-7" style="margin-top: 5px;">
+                        <div class="feedback-name">Goteti Venkatesh</div>
+                        <div class="feedback-more">VIT, Bhimavaram</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/mwlite/in/goteti-venkatesh-872a8b212">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">I learnt many new things in python language and also I learnt about the
+                    repilt how to compile the user code.</div>
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_aanandi.jpg" />
+                    </div>
+                    <div class="col-7" style="margin-top: 5px;">
+                        <div class="feedback-name">Aanandi Goel</div>
+                        <div class="feedback-more">ABESIT, Ghaziabad</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/aanandi-goel-47b21a19b">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">It was a nice experience.</div>
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_simran.png" />
+                    </div>
+                    <div class="col-7" style="margin-top: 5px;">
+                        <div class="feedback-name">Simran</div>
+                        <div class="feedback-more">SRMCEM, Lucknow</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/simran-krishna-b3b574163/">
+                            <div class="feedback-profile"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">Teaching was effective...the content was worth listening</div>
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_adbala.jpg" />
+                    </div>
+                    <div class="col-7" style="margin-top: 5px;">
+                        <div class="feedback-name">Adabala Teja Lakshman Kumar</div>
+                        <div class="feedback-more">SRKR Engineering College, Andhra Pradesh</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/teja-lakshman-kumar-adabala-26a5b5187">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">Good experience.</div>
+            </div>
+
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_rahul_purbey.jpg" />
+                    </div>
+                    <div class="col-6" style="margin-top: 5px;">
+                        <div class="feedback-name">Rahul Purbey</div>
+                        <div class="feedback-more">SRMIST</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/rahul-kumar-purbey-992b181a1">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">Tathastu provides good C++ course who are passionate about coding and want to
+                    work as sde in dream company like Amazon, Flipkart. It is a place which teaches you to build quick
+                    logic in programming. It was great experience
+                    to learn KickStart C++ with Tathastu.</div>
+
+            </div>
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_manushi_kothari.jpg" />
+                    </div>
+                    <div class="col-7" style="margin-top: 5px;">
+                        <div class="feedback-name">Manushi Kothari</div>
+                        <div class="feedback-more">TCET, Mumbai</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/manushi-kothari-615343206">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">It was great experience with Tathastu. Instructor is very supportive and
+                    always ready to help. I got a KickStart according to it’s title into C++ and it was fun learning.
+                </div>
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_pushan_verma.jpg" />
+                    </div>
+                    <div class="col-7" style="margin-top: 5px;">
+                        <div class="feedback-name">Pushan Verma</div>
+                        <div class="feedback-more">BPIT, Delhi</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/pushan-verma-559260176/">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">The course was for 30 days approximately and I didn't realize when it ended.
+                    The Instructor was so interactive and friendly that made me more confident and comfortable. Overall
+                    I would say its worth it's price and will boost
+                    performance of any individual. Happy Coding!!</div>
+            </div>
+
+            <div class="feedback-course">
+                <div class="row">
+                    <div class="feedback-img col-2" style="margin-right: 15px;">
+                        <img
+                            src="https://notestwowaits.s3.us-east-1.amazonaws.com/notes/testimonial_arpita_bhatt.jpg" />
+                    </div>
+                    <div class="col-7" style="margin-top: 5px;">
+                        <div class="feedback-name">Arpita Bhatt</div>
+                        <div class="feedback-more">GL Bajaj, Noida</div>
+                    </div>
+                    <div class="col-2">
+                        <a href="https://www.linkedin.com/in/arpita-bhatt-801981158">
+                            <div class="feedback-profile"><img
+                                    src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="feedback-text">It was really a nice experience, our instructor was very supportive. Really
+                    enjoyed!</div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
